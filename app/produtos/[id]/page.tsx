@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getAnuncios } from "@/lib/admin-data";
+import type { Anuncio } from "@/lib/data";
 import PaginaAnuncio from "./PaginaAnuncio";
 
 type Params = { id: string };
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
 export default async function ProdutoPage({ params }: { params: Promise<Params> }) {
   const { id } = await params;
-  const list = (await getAnuncios()) as { id: string; titulo: string; descricao: string; preco: string; imagem: string; imagens?: string[]; condicao?: string }[];
+  const list = (await getAnuncios()) as Anuncio[];
   const anuncio = list.find((a) => a.id === id);
   if (!anuncio) notFound();
   return <PaginaAnuncio anuncio={anuncio} />;
