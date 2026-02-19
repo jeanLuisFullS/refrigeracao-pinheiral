@@ -346,5 +346,29 @@
     "ipHash": "18fl",
     "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
     "timestamp": "2026-02-19T20:00:15.318Z"
+  },
+  {
+    "path": "/produtos/1",
+    "ipHash": "18fl",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "timestamp": "2026-02-19T20:04:43.704Z"
+  },
+  {
+    "path": "/produtos",
+    "ipHash": "18fl",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "timestamp": "2026-02-19T20:05:23.291Z"
+  },
+  {
+    "path": "/",
+    "ipHash": "18fl",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "timestamp": "2026-02-19T20:05:26.648Z"
+  },
+  {
+    "path": "/produtos",
+    "ipHash": "18fl",
+    "ua": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36",
+    "timestamp": "2026-02-19T20:06:19.861Z"
   }
 ]
