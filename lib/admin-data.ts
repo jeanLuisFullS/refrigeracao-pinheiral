@@ -93,16 +93,21 @@ export async function getErrorLogs(): Promise<ErrorLogEntry[]> {
 }
 
 export async function appendErrorLog(entry: Omit<ErrorLogEntry, "id" | "timestamp">) {
-  const list = await getErrorLogs();
-  const newEntry: ErrorLogEntry = {
-    ...entry,
-    id: `err_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
-    timestamp: new Date().toISOString(),
-  };
-  list.unshift(newEntry);
-  if (list.length > 500) list.length = 500;
-  await writeJson(files.errorLogs(), list);
-  return newEntry;
+  try {
+    const list = await getErrorLogs();
+    const newEntry: ErrorLogEntry = {
+      ...entry,
+      id: `err_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+      timestamp: new Date().toISOString(),
+    };
+    list.unshift(newEntry);
+    if (list.length > 500) list.length = 500;
+    await writeJson(files.errorLogs(), list);
+    return newEntry;
+  } catch {
+    /* Vercel: sistema somente leitura; ignora falha ao gravar log */
+    return { ...entry, id: "", timestamp: new Date().toISOString() } as ErrorLogEntry;
+  }
 }
 
 export async function getMaintenance(): Promise<MaintenanceState> {

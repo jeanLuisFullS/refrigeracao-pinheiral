@@ -74,16 +74,7 @@ export async function POST(request: Request) {
     }
   }
 
-  // Log temporário para debug
-  const hash = await getAdminPasswordHash();
-  console.log(`[LOGIN] Tentativa de login. Hash disponível: ${hash ? "SIM" : "NÃO"}`);
-  if (hash) {
-    console.log(`[LOGIN] Hash (primeiros 30 chars): ${hash.substring(0, 30)}...`);
-  }
-  
   const valid = await verifyPassword(password);
-  console.log(`[LOGIN] Senha "${password}" verificada: ${valid ? "VÁLIDA" : "INVÁLIDA"}`);
-  
   if (!valid) {
     const result = await recordFailedLogin(ip);
     await appendErrorLog({

@@ -28,7 +28,11 @@ async function loadAttempts(): Promise<Record<string, AttemptRecord>> {
 
 async function saveAttempts(data: Record<string, AttemptRecord>) {
   attemptsCache = data;
-  await writeFile(ATTEMPTS_FILE, JSON.stringify(data, null, 2), "utf-8");
+  try {
+    await writeFile(ATTEMPTS_FILE, JSON.stringify(data, null, 2), "utf-8");
+  } catch {
+    /* Vercel: sistema de arquivos somente leitura; ignora falha de escrita */
+  }
 }
 
 export function getClientIp(request: Request): string {
