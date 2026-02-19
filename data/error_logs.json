@@ -1,0 +1,100 @@
+[
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 1/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771525201655_kgl5duh",
+    "timestamp": "2026-02-19T18:20:01.655Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 1/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771523712949_84m39vl",
+    "timestamp": "2026-02-19T17:55:12.949Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 1/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771446252642_m9tepi6",
+    "timestamp": "2026-02-18T20:24:12.642Z"
+  },
+  {
+    "message": "Tentativa de login bloqueada (rate limit). IP: ::1",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771441424155_lu7zwu7",
+    "timestamp": "2026-02-18T19:03:44.155Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 3/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771441228810_gx08gxu",
+    "timestamp": "2026-02-18T19:00:28.810Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 2/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771441225675_cvf83ra",
+    "timestamp": "2026-02-18T19:00:25.675Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 1/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771441205812_gcxu0ef",
+    "timestamp": "2026-02-18T19:00:05.812Z"
+  },
+  {
+    "message": "Tentativa de login bloqueada (rate limit). IP: ::1",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771440857752_68tmh2n",
+    "timestamp": "2026-02-18T18:54:17.752Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 3/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771440575761_qvwxsrt",
+    "timestamp": "2026-02-18T18:49:35.761Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 2/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771440526552_og82xwp",
+    "timestamp": "2026-02-18T18:48:46.552Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 1/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771440234219_b73ixg8",
+    "timestamp": "2026-02-18T18:43:54.219Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 3/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771439998963_hwpnn77",
+    "timestamp": "2026-02-18T18:39:58.963Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 2/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771439984823_xd1vnuv",
+    "timestamp": "2026-02-18T18:39:44.823Z"
+  },
+  {
+    "message": "Login falhou. IP: ::1. Tentativa 1/3.",
+    "url": "/api/admin/login",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0",
+    "id": "err_1771439975777_oge1r02",
+    "timestamp": "2026-02-18T18:39:35.777Z"
+  }
+]

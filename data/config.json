@@ -1,0 +1,19 @@
+{
+  "nome": "Refrigeração Pinheiral",
+  "slogan": "Assistência Técnica",
+  "descricao": "Assistência técnica em geladeiras, freezers, lavadoras e ar condicionado. Atendemos Pinheiral, Volta Redonda e região.",
+  "telefones": [
+    {"numero": "5524981083067", "label": "(24) 98108-3067"},
+    {"numero": "5524981451300", "label": "(24) 98145-1300"},
+    {"numero": "5524999312484", "label": "(24) 99931-2484"}
+  ],
+  "whatsappPrincipal": "5524981083067",
+  "endereco": {
+    "rua": "R. Helena Corrêa de Miranda, 656 - Centro",
+    "cidade": "Pinheiral",
+    "estado": "RJ",
+    "cep": "27197-000"
+  },
+  "horario": "Segunda a Sábado, 8h às 18h",
+  "areasAtendimento": ["Pinheiral", "Volta Redonda", "Barra Mansa", "Piraí", "região"]
+}

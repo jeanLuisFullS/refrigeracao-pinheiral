@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #0d9488;
+  --brand-primary-hover: #0f766e;
+  --brand-dark: #0f172a;
+  --brand-muted: #64748b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+/* Transições suaves entre seções */
+section {
+  @apply transition-colors duration-300;
+}
+
+/* Carrossel horizontal de depoimentos */
+@keyframes depoimentosScrollHorizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

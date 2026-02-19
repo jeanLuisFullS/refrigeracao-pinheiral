@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "titulo": "Geladeira Consul 2 portas",
+    "descricao": "Geladeira em ótimo estado, frost free. Ideal para família. Entrega na região.",
+    "preco": "R$ 1.200",
+    "imagem": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80",
+    "imagens": [
+      "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80"
+    ],
+    "condicao": "novo",
+    "destaque": true
+  },
+  {
+    "id": "2",
+    "titulo": "Geladeira Brastemp 1 porta",
+    "descricao": "Compacta e econômica. Perfeita para apartamento ou escritório.",
+    "preco": "R$ 800",
+    "imagem": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=80",
+    "imagens": [
+      "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=80"
+    ],
+    "condicao": "usado",
+    "destaque": true
+  },
+  {
+    "id": "3",
+    "titulo": "Freezer vertical",
+    "descricao": "Freezer em ótimo estado de conservação. Ótimo para comércio ou residência.",
+    "preco": "R$ 650",
+    "imagem": "/uploads/ADTiGgjI-q.png",
+    "imagens": [
+      "/uploads/ADTiGgjI-q.png"
+    ],
+    "condicao": "usado",
+    "destaque": false
+  },
+  {
+    "id": "4",
+    "titulo": "Geladeira Electrolux frost free",
+    "descricao": "Modelo mais recente, pouco uso. Garantia de 90 dias.",
+    "preco": "R$ 1.500",
+    "imagem": "/uploads/pcjuVAsp5d.png",
+    "imagens": [
+      "/uploads/pcjuVAsp5d.png"
+    ],
+    "condicao": "novo",
+    "destaque": true
+  },
+  {
+    "id": "5",
+    "titulo": "Máquina de lavar 12 kg",
+    "descricao": "Lavadora seminova, ótimo para família grande. Funcionando perfeitamente.",
+    "preco": "Preço no WhatsApp",
+    "imagem": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=80",
+    "imagens": [
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=80"
+    ],
+    "condicao": "usado",
+    "destaque": false
+  },
+  {
+    "id": "6",
+    "titulo": "Ar condicionado split 12.000 BTUs",
+    "descricao": "Usado, em bom estado. Instalação à parte. Consulte.",
+    "preco": "R$ 900",
+    "imagem": "/uploads/DtA9AypoQL.png",
+    "imagens": [
+      "/uploads/DtA9AypoQL.png"
+    ],
+    "condicao": "usado",
+    "destaque": false
+  }
+]

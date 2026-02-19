@@ -1,0 +1,2 @@
+{"location":"app/api/admin/login/route.ts:POST","message":"login hash source and rate","data":{"hasFileHash":false,"hasEnvHash":true,"hashDefined":true,"hypothesisId":"H1"},"timestamp":1771441424085}
+{"location":"app/api/admin/login/route.ts:rate","message":"rate limit result","data":{"allowed":false,"ip":"::1","lockedUntil":"2026-02-18T19:15:28.794Z","hypothesisId":"H3"},"timestamp":1771441424145}
