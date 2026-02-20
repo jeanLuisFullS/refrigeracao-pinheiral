@@ -3,6 +3,7 @@ import type { Config, Anuncio, Depoimento } from "@/lib/data";
 import { config as staticConfig } from "@/lib/data";
 import HomeContent from "./HomeContent";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function Page() {

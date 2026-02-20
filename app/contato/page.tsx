@@ -3,6 +3,9 @@ import type { Config } from "@/lib/data";
 import { config as staticConfig } from "@/lib/data";
 import ContatoContent from "./ContatoContent";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function ContatoPage() {
   const configRaw = await getConfig();
   const config = (configRaw?.nome ? configRaw : staticConfig) as Config;
