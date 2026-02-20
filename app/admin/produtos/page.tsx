@@ -171,8 +171,18 @@ export default function AdminProdutosPage() {
   const handleDelete = async (id: string) => {
     if (!confirm("Excluir este produto?")) return;
     setLoading(true);
-    await fetch("/api/admin/produtos?id=" + id, { method: "DELETE", credentials: "include" });
-    load();
+    try {
+      const res = await fetch("/api/admin/produtos?id=" + id, { method: "DELETE", credentials: "include" });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        alert(data.error || "Erro ao excluir.");
+        setLoading(false);
+        return;
+      }
+      load();
+    } catch {
+      alert("Erro de conexão ao excluir.");
+    }
     setLoading(false);
   };
 

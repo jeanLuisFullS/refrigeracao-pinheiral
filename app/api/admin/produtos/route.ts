@@ -54,9 +54,14 @@ export async function POST(request: Request) {
   list.push(newItem);
   try {
     await setAnuncios(list);
-  } catch {
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "";
     return NextResponse.json(
-      { error: "Não foi possível salvar (na Vercel os dados não são gravados). Edite o repositório: altere data/anuncios.json e faça um novo deploy, ou use o site em um servidor com disco gravável." },
+      {
+        error:
+          msg ||
+          "Não foi possível salvar. Na Vercel, configure Supabase: variáveis NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY (chave service_role, não anon).",
+      },
       { status: 503 }
     );
   }
@@ -76,9 +81,14 @@ export async function PUT(request: Request) {
   list[idx] = { ...list[idx], ...norm };
   try {
     await setAnuncios(list);
-  } catch {
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "";
     return NextResponse.json(
-      { error: "Não foi possível salvar (na Vercel os dados não são gravados). Edite data/anuncios.json no repositório e faça um novo deploy." },
+      {
+        error:
+          msg ||
+          "Não foi possível salvar. Verifique na Vercel: NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY (use a chave service_role do Supabase).",
+      },
       { status: 503 }
     );
   }
@@ -96,9 +106,14 @@ export async function DELETE(request: Request) {
   if (filtered.length === list.length) return NextResponse.json({ error: "Não encontrado" }, { status: 404 });
   try {
     await setAnuncios(filtered);
-  } catch {
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "";
     return NextResponse.json(
-      { error: "Não foi possível excluir (na Vercel os dados não são gravados). Edite data/anuncios.json e faça um novo deploy." },
+      {
+        error:
+          msg ||
+          "Não foi possível excluir. Verifique na Vercel: NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY (chave service_role).",
+      },
       { status: 503 }
     );
   }

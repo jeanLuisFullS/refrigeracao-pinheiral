@@ -53,9 +53,18 @@ Em Storage crie um bucket público chamado `uploads`.
 
 ## 4. Variáveis na Vercel
 
-- `NEXT_PUBLIC_SUPABASE_URL` - URL do projeto
-- `SUPABASE_SERVICE_ROLE_KEY` - chave service_role
+- `NEXT_PUBLIC_SUPABASE_URL` - URL do projeto (ex: `https://xxxx.supabase.co`)
+- `SUPABASE_SERVICE_ROLE_KEY` - **obrigatório usar a chave service_role** (em Settings > API, é a "service_role" secret), **não** a anon key
 - `SESSION_SECRET` - string aleatória para cookie de sessão
 - `ADMIN_PASSWORD_HASH` (opcional) - hash bcrypt da senha
 
+**Importante:** Depois de alterar variáveis na Vercel, faça um novo deploy (Deployments > ... > Redeploy) para as mudanças valerem.
+
 Sem Supabase configurado, o site continua usando os JSON em `data/` e upload em disco ou link externo.
+
+## 5. Se edições não salvarem na Vercel
+
+1. Confira os **nomes exatos** das variáveis: `NEXT_PUBLIC_SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY`.
+2. Use a chave **service_role** (secret), não a **anon** (pública). No Supabase: Settings > API > Project API keys > "service_role".
+3. Depois de mudar as variáveis, faça **Redeploy** do projeto na Vercel.
+4. Ao salvar ou excluir no admin, se der erro, a mensagem na tela deve mostrar o motivo (ex.: erro do Supabase ou aviso para conferir as variáveis).

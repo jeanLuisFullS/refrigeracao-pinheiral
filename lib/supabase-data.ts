@@ -14,7 +14,8 @@ export async function getConfigFromSupabase(): Promise<Record<string, unknown>> 
 export async function setConfigInSupabase(payload: Record<string, unknown>): Promise<void> {
   const sb = getSupabase();
   if (!sb) return;
-  await sb.from("config").upsert({ id: CONFIG_ID, data: payload, updated_at: new Date().toISOString() }, { onConflict: "id" });
+  const { error } = await sb.from("config").upsert({ id: CONFIG_ID, data: payload, updated_at: new Date().toISOString() }, { onConflict: "id" });
+  if (error) throw new Error(error.message);
 }
 
 export async function getAnunciosFromSupabase(): Promise<unknown[]> {
@@ -34,10 +35,16 @@ export async function setAnunciosInSupabase(items: unknown[]): Promise<void> {
     return { id, data: item, updated_at: new Date().toISOString() };
   });
   const ids = rows.map((r) => r.id);
-  const existing = await sb.from("anuncios").select("id");
-  const toDelete = (existing.data ?? []).filter((r: { id: string }) => !ids.includes(r.id)).map((r: { id: string }) => r.id);
-  if (toDelete.length) await sb.from("anuncios").delete().in("id", toDelete);
-  if (rows.length) await sb.from("anuncios").upsert(rows, { onConflict: "id" });
+  const { data: existing } = await sb.from("anuncios").select("id");
+  const toDelete = (existing ?? []).filter((r: { id: string }) => !ids.includes(r.id)).map((r: { id: string }) => r.id);
+  if (toDelete.length) {
+    const { error: errDel } = await sb.from("anuncios").delete().in("id", toDelete);
+    if (errDel) throw new Error(errDel.message);
+  }
+  if (rows.length) {
+    const { error: errUpsert } = await sb.from("anuncios").upsert(rows, { onConflict: "id" });
+    if (errUpsert) throw new Error(errUpsert.message);
+  }
 }
 
 export async function getDepoimentosFromSupabase(): Promise<unknown[]> {
@@ -57,10 +64,16 @@ export async function setDepoimentosInSupabase(items: unknown[]): Promise<void> 
     return { id, data: item, updated_at: new Date().toISOString() };
   });
   const ids = rows.map((r) => r.id);
-  const existing = await sb.from("depoimentos").select("id");
-  const toDelete = (existing.data ?? []).filter((r: { id: string }) => !ids.includes(r.id)).map((r: { id: string }) => r.id);
-  if (toDelete.length) await sb.from("depoimentos").delete().in("id", toDelete);
-  if (rows.length) await sb.from("depoimentos").upsert(rows, { onConflict: "id" });
+  const { data: existing } = await sb.from("depoimentos").select("id");
+  const toDelete = (existing ?? []).filter((r: { id: string }) => !ids.includes(r.id)).map((r: { id: string }) => r.id);
+  if (toDelete.length) {
+    const { error: errDel } = await sb.from("depoimentos").delete().in("id", toDelete);
+    if (errDel) throw new Error(errDel.message);
+  }
+  if (rows.length) {
+    const { error: errUpsert } = await sb.from("depoimentos").upsert(rows, { onConflict: "id" });
+    if (errUpsert) throw new Error(errUpsert.message);
+  }
 }
 
 export async function getAdminDataFromSupabase(): Promise<{ passwordHash?: string }> {
@@ -75,8 +88,9 @@ export async function getAdminDataFromSupabase(): Promise<{ passwordHash?: strin
 export async function setAdminPasswordHashInSupabase(hash: string): Promise<void> {
   const sb = getSupabase();
   if (!sb) return;
-  await sb.from("admin_settings").upsert(
+  const { error } = await sb.from("admin_settings").upsert(
     { id: ADMIN_SETTINGS_ID, password_hash: hash, updated_at: new Date().toISOString() },
     { onConflict: "id" }
   );
+  if (error) throw new Error(error.message);
 }
