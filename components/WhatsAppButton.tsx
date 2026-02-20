@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { config } from "@/lib/data";
+import type { Config } from "@/lib/data";
+import { config as defaultConfig } from "@/lib/data";
 
-export default function WhatsAppButton() {
+export default function WhatsAppButton({ config: configProp }: { config?: Config } = {}) {
+  const config = configProp ?? defaultConfig;
   const url = `https://wa.me/${config.whatsappPrincipal}`;
   return (
     <motion.a

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
-import { getAnuncios } from "@/lib/admin-data";
-import type { Anuncio } from "@/lib/data";
+import { getAnuncios, getConfig } from "@/lib/admin-data";
+import type { Anuncio, Config } from "@/lib/data";
+import { config as staticConfig } from "@/lib/data";
 import PaginaAnuncio from "./PaginaAnuncio";
 
 type Params = { id: string };
@@ -15,8 +16,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
 export default async function ProdutoPage({ params }: { params: Promise<Params> }) {
   const { id } = await params;
-  const list = (await getAnuncios()) as Anuncio[];
-  const anuncio = list.find((a) => a.id === id);
+  const [list, configRaw] = await Promise.all([getAnuncios(), getConfig()]);
+  const anuncios = (Array.isArray(list) ? list : []) as Anuncio[];
+  const anuncio = anuncios.find((a) => a.id === id);
   if (!anuncio) notFound();
-  return <PaginaAnuncio anuncio={anuncio} />;
+  const config = (configRaw?.nome ? configRaw : staticConfig) as Config;
+  return <PaginaAnuncio anuncio={anuncio} config={config} />;
 }

@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { config } from "@/lib/data";
+import type { Config } from "@/lib/data";
+import { config as defaultConfig } from "@/lib/data";
 import LogoPinheiros from "./LogoPinheiros";
 
-export default function Footer() {
+export default function Footer({ config: configProp }: { config?: Config } = {}) {
+  const config = configProp ?? defaultConfig;
   return (
     <footer className="bg-slate-900 text-slate-300">
       <div className="max-w-6xl mx-auto px-4 py-12">
@@ -13,13 +15,13 @@ export default function Footer() {
               <span className="font-bold text-slate-100">{config.nome}</span>
             </Link>
             <p className="text-slate-400 text-sm">{config.descricao}</p>
-            <p className="text-slate-500 text-sm mt-2">Atendemos: {config.areasAtendimento.join(", ")}.</p>
+            <p className="text-slate-500 text-sm mt-2">Atendemos: {(config.areasAtendimento ?? []).join(", ")}.</p>
           </div>
           <div>
             <h3 className="font-semibold text-white text-sm uppercase tracking-wider mb-3">Contato</h3>
             <p className="text-slate-400 text-sm">{config.horario}</p>
             <div className="mt-2 space-y-1">
-              {config.telefones.map((t) => (
+              {(config.telefones ?? []).map((t) => (
                 <a
                   key={t.numero}
                   href={`https://wa.me/${t.numero}`}
@@ -31,7 +33,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            {config.endereco.rua && (
+            {config.endereco?.rua && (
               <p className="text-slate-500 text-sm mt-2">
                 {config.endereco.rua}, {config.endereco.cidade} - {config.endereco.estado}
               </p>

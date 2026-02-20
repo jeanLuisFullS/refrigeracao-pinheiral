@@ -44,7 +44,11 @@ export function getAnunciosDestaque(): Anuncio[] {
   return anuncios.filter((a) => a.destaque);
 }
 
-export function buildWhatsAppMessage(type: "orcamento" | "agendar" | "produto", data?: Record<string, string>): string {
+export function buildWhatsAppMessage(
+  type: "orcamento" | "agendar" | "produto",
+  data?: Record<string, string>,
+  cfg?: Config
+): string {
   const prefix = "Olá! Vim pelo site da Refrigeração Pinheiral. ";
   if (type === "orcamento" && data) {
     return `${prefix}Gostaria de orçamento:\n*Nome:* ${data.nome}\n*Telefone:* ${data.telefone}\n*Cidade:* ${data.cidade}\n*Aparelho:* ${data.aparelho}\n*Problema:* ${data.descricao}`;
@@ -58,7 +62,9 @@ export function buildWhatsAppMessage(type: "orcamento" | "agendar" | "produto", 
   return prefix;
 }
 
-export function getWhatsAppUrl(message: string): string {
+export function getWhatsAppUrl(message: string, cfg?: Config): string {
+  const c = cfg ?? config;
+  const principal = (c as Config).whatsappPrincipal ?? config.whatsappPrincipal;
   const encoded = encodeURIComponent(message);
-  return `https://wa.me/${config.whatsappPrincipal}?text=${encoded}`;
+  return `https://wa.me/${principal}?text=${encoded}`;
 }

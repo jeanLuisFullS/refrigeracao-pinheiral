@@ -21,7 +21,10 @@ export default function CarrosselFotos({
   hoverZoom = true,
 }: Props) {
   const [index, setIndex] = useState(0);
+  const [imgError, setImgError] = useState(false);
   const list = imagens.length ? imagens : [];
+
+  useEffect(() => setImgError(false), [index]);
 
   const go = useCallback(
     (dir: 1 | -1) => {
@@ -58,12 +61,23 @@ export default function CarrosselFotos({
         style={{ overflow: "hidden" }}
       >
         {isExternal ? (
-          <img
-            src={src}
-            alt={alt || titulo}
-            className={`w-full h-full object-cover transition-transform duration-300 ${hoverZoom ? "hover:scale-110" : ""}`}
-            style={{ transformOrigin: "center" }}
-          />
+          <>
+            <img
+              src={src}
+              alt={alt || titulo}
+              className={`w-full h-full object-cover transition-transform duration-300 ${hoverZoom ? "hover:scale-110" : ""}`}
+              style={{ transformOrigin: "center" }}
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
+                if (fallback) fallback.style.display = "flex";
+              }}
+            />
+            <span className="absolute inset-0 hidden items-center justify-center bg-slate-200 text-5xl text-slate-400" aria-hidden>📦</span>
+          </>
+        ) : imgError ? (
+          <span className="text-5xl text-slate-400" aria-hidden>📦</span>
         ) : (
           <Image
             src={src}
@@ -72,6 +86,7 @@ export default function CarrosselFotos({
             className={`object-cover transition-transform duration-300 ${hoverZoom ? "hover:scale-110" : ""}`}
             style={{ transformOrigin: "center" }}
             sizes="(max-width: 768px) 100vw, 600px"
+            onError={() => setImgError(true)}
           />
         )}
       </div>

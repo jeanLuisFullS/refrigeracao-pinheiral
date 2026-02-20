@@ -52,7 +52,14 @@ export async function POST(request: Request) {
     destaque: !!norm.destaque,
   };
   list.push(newItem);
-  await setAnuncios(list);
+  try {
+    await setAnuncios(list);
+  } catch {
+    return NextResponse.json(
+      { error: "Não foi possível salvar (na Vercel os dados não são gravados). Edite o repositório: altere data/anuncios.json e faça um novo deploy, ou use o site em um servidor com disco gravável." },
+      { status: 503 }
+    );
+  }
   return NextResponse.json(newItem);
 }
 
@@ -67,7 +74,14 @@ export async function PUT(request: Request) {
   if (idx === -1) return NextResponse.json({ error: "Não encontrado" }, { status: 404 });
   const norm = normalizeAnuncio(rest);
   list[idx] = { ...list[idx], ...norm };
-  await setAnuncios(list);
+  try {
+    await setAnuncios(list);
+  } catch {
+    return NextResponse.json(
+      { error: "Não foi possível salvar (na Vercel os dados não são gravados). Edite data/anuncios.json no repositório e faça um novo deploy." },
+      { status: 503 }
+    );
+  }
   return NextResponse.json(list[idx]);
 }
 
@@ -80,6 +94,13 @@ export async function DELETE(request: Request) {
   const list = (await getAnuncios()) as Anuncio[];
   const filtered = list.filter((x) => x.id !== id);
   if (filtered.length === list.length) return NextResponse.json({ error: "Não encontrado" }, { status: 404 });
-  await setAnuncios(filtered);
+  try {
+    await setAnuncios(filtered);
+  } catch {
+    return NextResponse.json(
+      { error: "Não foi possível excluir (na Vercel os dados não são gravados). Edite data/anuncios.json e faça um novo deploy." },
+      { status: 503 }
+    );
+  }
   return NextResponse.json({ ok: true });
 }

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { config } from "@/lib/data";
+import type { Config } from "@/lib/data";
+import { config as defaultConfig } from "@/lib/data";
 import LogoPinheiros from "./LogoPinheiros";
 
 const links = [
@@ -15,7 +16,8 @@ const links = [
   { href: "/orcamento", label: "Orçamento" },
 ];
 
-export default function Header() {
+export default function Header({ config: configProp }: { config?: Config } = {}) {
+  const config = configProp ?? defaultConfig;
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

@@ -115,6 +115,22 @@ Copie o valor que aparecer e cole em `ADMIN_PASSWORD_HASH` na Vercel. A senha de
 
 ---
 
+## (Opcional) Usar Supabase na Vercel
+
+Na Vercel o disco é somente leitura: alterações no admin (config, anúncios, depoimentos, senha, upload de fotos) não persistem. Para o site funcionar 100% em produção com o admin editando tudo e fazendo upload de fotos, configure o **Supabase**:
+
+1. Crie um projeto em [supabase.com](https://supabase.com).
+2. Siga o guia **`docs/SUPABASE.md`**: rode o SQL das tabelas, crie o bucket `uploads` no Storage e anote a URL e a chave **service_role**.
+3. Na Vercel, em **Environment Variables**, adicione:
+   - `NEXT_PUBLIC_SUPABASE_URL` = URL do projeto
+   - `SUPABASE_SERVICE_ROLE_KEY` = chave service_role
+   - `SESSION_SECRET` = uma string aleatória longa (para o cookie de sessão do admin)
+4. Faça um novo deploy.
+
+Com isso, config, anúncios, depoimentos e senha do admin passam a ser lidos/gravados no Supabase, e as fotos enviadas pelo admin vão para o Storage. Sem Supabase, o site continua usando os JSON em `data/` no build e a troca de senha/upload não persistem na Vercel.
+
+---
+
 ## Resumo rápido
 
 1. **Ter em mãos:** senha para o admin (e, se quiser, endereço e URL final).

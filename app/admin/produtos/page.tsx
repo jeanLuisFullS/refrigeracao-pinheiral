@@ -141,25 +141,29 @@ export default function AdminProdutosPage() {
 
     setLoading(true);
     try {
-      if (editing) {
-        await fetch("/api/admin/produtos", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify(payload),
-        });
-      } else {
-        await fetch("/api/admin/produtos", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ ...payload, id: undefined }),
-        });
+      const res = editing
+        ? await fetch("/api/admin/produtos", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify(payload),
+          })
+        : await fetch("/api/admin/produtos", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ ...payload, id: undefined }),
+          });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        alert(data.error || "Erro ao salvar.");
+        setLoading(false);
+        return;
       }
       load();
       closeForm();
     } catch {
-      alert("Erro ao salvar.");
+      alert("Erro de conexão ao salvar.");
     }
     setLoading(false);
   };
@@ -286,6 +290,7 @@ export default function AdminProdutosPage() {
                 <div>
                   <label className="block text-sm text-slate-400 mb-1">Fotos (ordem = ordem no site)</label>
                   <p className="text-xs text-slate-500 mb-2">Primeira foto = capa. Arraste ou use setas para reordenar.</p>
+                  <p className="text-xs text-amber-400/90 mb-2">Site na Vercel: envio de arquivo não funciona. Use sempre o campo &quot;Colar URL da imagem&quot; com link da foto (Imgur, Google Drive público, etc.).</p>
                   <div className="space-y-2">
                     {imagens.map((url, i) => (
                       <div key={i} className="flex items-center gap-2 bg-slate-700 rounded-lg p-2">

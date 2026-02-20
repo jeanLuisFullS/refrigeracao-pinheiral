@@ -49,7 +49,17 @@ export async function POST(request: Request) {
   }
 
   const newHash = await bcrypt.hash(newPassword, 12);
-  await setAdminPasswordHash(newHash);
+  try {
+    await setAdminPasswordHash(newHash);
+  } catch {
+    return NextResponse.json(
+      {
+        error:
+          "Não foi possível salvar a nova senha (na Vercel o disco é somente leitura). Para trocar a senha em produção: 1) Rode no seu PC: node scripts/generate-password-hash.js \"SuaNovaSenha\" 2) No painel da Vercel, em Settings → Environment Variables, atualize ADMIN_PASSWORD_HASH com o hash gerado 3) Faça um novo deploy.",
+      },
+      { status: 503 }
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }

@@ -28,9 +28,9 @@
     "titulo": "Freezer vertical",
     "descricao": "Freezer em ótimo estado de conservação. Ótimo para comércio ou residência.",
     "preco": "R$ 650",
-    "imagem": "/uploads/ADTiGgjI-q.png",
+    "imagem": "https://images.unsplash.com/photo-1585659722983-3a675dabf23d?w=600&q=80",
     "imagens": [
-      "/uploads/ADTiGgjI-q.png"
+      "https://images.unsplash.com/photo-1585659722983-3a675dabf23d?w=600&q=80"
     ],
     "condicao": "usado",
     "destaque": false
@@ -40,9 +40,9 @@
     "titulo": "Geladeira Electrolux frost free",
     "descricao": "Modelo mais recente, pouco uso. Garantia de 90 dias.",
     "preco": "R$ 1.500",
-    "imagem": "/uploads/pcjuVAsp5d.png",
+    "imagem": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=80",
     "imagens": [
-      "/uploads/pcjuVAsp5d.png"
+      "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=80"
     ],
     "condicao": "novo",
     "destaque": true
@@ -64,9 +64,9 @@
     "titulo": "Ar condicionado split 12.000 BTUs",
     "descricao": "Usado, em bom estado. Instalação à parte. Consulte.",
     "preco": "R$ 900",
-    "imagem": "/uploads/DtA9AypoQL.png",
+    "imagem": "https://images.unsplash.com/photo-1631545806608-2cc3247300f8?w=600&q=80",
     "imagens": [
-      "/uploads/DtA9AypoQL.png"
+      "https://images.unsplash.com/photo-1631545806608-2cc3247300f8?w=600&q=80"
     ],
     "condicao": "usado",
     "destaque": false

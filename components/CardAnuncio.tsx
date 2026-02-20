@@ -1,22 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { getWhatsAppUrl, buildWhatsAppMessage } from "@/lib/data";
-import type { Anuncio } from "@/lib/data";
+import type { Anuncio, Config } from "@/lib/data";
 
 function getImagens(a: Anuncio): string[] {
   if (a.imagens && a.imagens.length > 0) return a.imagens;
   return a.imagem ? [a.imagem] : [];
 }
 
-export default function CardAnuncio({ anuncio }: { anuncio: Anuncio }) {
-  const msg = buildWhatsAppMessage("produto", {
-    titulo: anuncio.titulo,
-    preco: anuncio.preco,
-  });
-  const url = getWhatsAppUrl(msg);
+export default function CardAnuncio({ anuncio, config }: { anuncio: Anuncio; config?: Config }) {
+  const [imgError, setImgError] = useState(false);
+  const msg = buildWhatsAppMessage("produto", { titulo: anuncio.titulo, preco: anuncio.preco }, config);
+  const url = getWhatsAppUrl(msg, config);
   const imagens = getImagens(anuncio);
   const primeiraImg = imagens[0];
   const isPlaceholder = !primeiraImg || primeiraImg.includes("placeholder");
@@ -35,11 +34,22 @@ export default function CardAnuncio({ anuncio }: { anuncio: Anuncio }) {
           {isPlaceholder ? (
             <span className="text-5xl text-slate-300" aria-hidden>📦</span>
           ) : primeiraImg.startsWith("http") ? (
-            <img
-              src={primeiraImg}
-              alt={anuncio.titulo}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
+            <>
+              <img
+                src={primeiraImg}
+                alt={anuncio.titulo}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
+                  if (fallback) fallback.style.display = "flex";
+                }}
+              />
+              <span className="absolute inset-0 hidden items-center justify-center bg-slate-200 text-5xl text-slate-400" aria-hidden>📦</span>
+            </>
+          ) : imgError ? (
+            <span className="text-5xl text-slate-300" aria-hidden>📦</span>
           ) : (
             <Image
               src={primeiraImg}
@@ -47,6 +57,7 @@ export default function CardAnuncio({ anuncio }: { anuncio: Anuncio }) {
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
               sizes="(max-width: 768px) 100vw, 33vw"
+              onError={() => setImgError(true)}
             />
           )}
           {imagens.length > 1 && (

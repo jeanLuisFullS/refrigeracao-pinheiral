@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { config, buildWhatsAppMessage, getWhatsAppUrl } from "@/lib/data";
+import { config as defaultConfig, buildWhatsAppMessage, getWhatsAppUrl } from "@/lib/data";
+import type { Config } from "@/lib/data";
 
 const aparelhos = [
   "Geladeira",
@@ -14,9 +15,11 @@ const aparelhos = [
 
 type Props = {
   variant?: "compact" | "full";
+  config?: Config;
 };
 
-export default function FormOrcamento({ variant = "full" }: Props) {
+export default function FormOrcamento({ variant = "full", config: configProp }: Props) {
+  const config = configProp ?? defaultConfig;
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cidade, setCidade] = useState("");
@@ -27,29 +30,18 @@ export default function FormOrcamento({ variant = "full" }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setEnviando(true);
+    const data = { nome, telefone, cidade, aparelho, descricao };
     try {
       await fetch("/api/orcamento", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, telefone, cidade, aparelho, descricao }),
+        body: JSON.stringify(data),
       });
-      const msg = buildWhatsAppMessage("orcamento", {
-        nome,
-        telefone,
-        cidade,
-        aparelho,
-        descricao,
-      });
-      window.location.href = getWhatsAppUrl(msg);
+      const msg = buildWhatsAppMessage("orcamento", data, config);
+      window.location.href = getWhatsAppUrl(msg, config);
     } catch {
-      const msg = buildWhatsAppMessage("orcamento", {
-        nome,
-        telefone,
-        cidade,
-        aparelho,
-        descricao,
-      });
-      window.location.href = getWhatsAppUrl(msg);
+      const msg = buildWhatsAppMessage("orcamento", data, config);
+      window.location.href = getWhatsAppUrl(msg, config);
     } finally {
       setEnviando(false);
     }

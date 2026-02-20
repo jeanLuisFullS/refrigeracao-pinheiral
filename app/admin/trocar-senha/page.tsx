@@ -55,8 +55,11 @@ export default function AdminTrocarSenhaPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-white mb-6">Trocar senha</h1>
-      <p className="text-slate-400 mb-6">
+      <p className="text-slate-400 mb-4">
         Altere a senha de acesso ao painel admin. Use uma senha forte e guarde-a em local seguro.
+      </p>
+      <p className="text-amber-400/90 text-sm mb-6">
+        Se o site estiver na Vercel, a alteração por aqui não é salva. Nesse caso: gere o hash com <code className="bg-slate-700 px-1 rounded">node scripts/generate-password-hash.js &quot;SuaNovaSenha&quot;</code>, depois em Vercel → Settings → Environment Variables atualize <code className="bg-slate-700 px-1 rounded">ADMIN_PASSWORD_HASH</code> e faça um novo deploy.
       </p>
       <form onSubmit={handleSubmit} className="max-w-md space-y-4">
         <div>

@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { depoimentos } from "@/lib/data";
+import { depoimentos as staticDepoimentos } from "@/lib/data";
+import type { Depoimento } from "@/lib/data";
 
-const useLoop = depoimentos.length >= 4;
+const useLoop = (list: Depoimento[]) => list.length >= 4;
 
-function Card({ d }: { d: { id: string; nome: string; cidade: string; texto: string } }) {
+function Card({ d }: { d: Depoimento }) {
   return (
     <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 flex-shrink-0 w-[280px] sm:w-[300px]">
       <p className="text-slate-700 italic text-sm line-clamp-3">&ldquo;{d.texto}&rdquo;</p>
@@ -15,7 +16,8 @@ function Card({ d }: { d: { id: string; nome: string; cidade: string; texto: str
   );
 }
 
-export default function SecaoDepoimentos() {
+export default function SecaoDepoimentos({ depoimentos: depoimentosProp }: { depoimentos?: Depoimento[] } = {}) {
+  const depoimentos = depoimentosProp ?? staticDepoimentos;
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -38,7 +40,7 @@ export default function SecaoDepoimentos() {
           Atendemos Pinheiral, Volta Redonda e região com compromisso e qualidade.
         </motion.p>
 
-        {useLoop ? (
+        {useLoop(depoimentos) ? (
           <div className="overflow-hidden -mx-4">
             <div
               className="flex gap-4 py-2"

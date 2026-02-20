@@ -1,5 +1,16 @@
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
+import { isSupabaseConfigured } from "./supabase";
+import {
+  getConfigFromSupabase,
+  setConfigInSupabase,
+  getAnunciosFromSupabase,
+  setAnunciosInSupabase,
+  getDepoimentosFromSupabase,
+  setDepoimentosInSupabase,
+  getAdminDataFromSupabase,
+  setAdminPasswordHashInSupabase,
+} from "./supabase-data";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
@@ -50,26 +61,41 @@ async function writeJson(filePath: string, data: unknown) {
 }
 
 export async function getConfig() {
+  if (isSupabaseConfigured()) return getConfigFromSupabase();
   return readJson<Record<string, unknown>>(files.config(), {});
 }
 
 export async function setConfig(data: Record<string, unknown>) {
+  if (isSupabaseConfigured()) {
+    await setConfigInSupabase(data);
+    return;
+  }
   await writeJson(files.config(), data);
 }
 
 export async function getAnuncios() {
+  if (isSupabaseConfigured()) return getAnunciosFromSupabase();
   return readJson<unknown[]>(files.anuncios(), []);
 }
 
 export async function setAnuncios(data: unknown[]) {
+  if (isSupabaseConfigured()) {
+    await setAnunciosInSupabase(data);
+    return;
+  }
   await writeJson(files.anuncios(), data);
 }
 
 export async function getDepoimentos() {
+  if (isSupabaseConfigured()) return getDepoimentosFromSupabase();
   return readJson<unknown[]>(files.depoimentos(), []);
 }
 
 export async function setDepoimentos(data: unknown[]) {
+  if (isSupabaseConfigured()) {
+    await setDepoimentosInSupabase(data);
+    return;
+  }
   await writeJson(files.depoimentos(), data);
 }
 
@@ -123,10 +149,15 @@ export async function setMaintenance(state: MaintenanceState) {
 export type AdminData = { passwordHash?: string };
 
 export async function getAdminData(): Promise<AdminData> {
+  if (isSupabaseConfigured()) return getAdminDataFromSupabase();
   return readJson<AdminData>(files.admin(), {});
 }
 
 export async function setAdminPasswordHash(hash: string): Promise<void> {
+  if (isSupabaseConfigured()) {
+    await setAdminPasswordHashInSupabase(hash);
+    return;
+  }
   await writeJson(files.admin(), { passwordHash: hash });
 }
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { getWhatsAppUrl, buildWhatsAppMessage } from "@/lib/data";
-import type { Anuncio } from "@/lib/data";
+import type { Anuncio, Config } from "@/lib/data";
 import CarrosselFotos from "@/components/CarrosselFotos";
 
 function getImagens(a: Anuncio): string[] {
@@ -11,10 +11,10 @@ function getImagens(a: Anuncio): string[] {
   return a.imagem ? [a.imagem] : [];
 }
 
-export default function PaginaAnuncio({ anuncio }: { anuncio: Anuncio }) {
+export default function PaginaAnuncio({ anuncio, config }: { anuncio: Anuncio; config?: Config }) {
   const imagens = getImagens(anuncio);
-  const msg = buildWhatsAppMessage("produto", { titulo: anuncio.titulo, preco: anuncio.preco });
-  const whatsappUrl = getWhatsAppUrl(msg);
+  const msg = buildWhatsAppMessage("produto", { titulo: anuncio.titulo, preco: anuncio.preco }, config);
+  const whatsappUrl = getWhatsAppUrl(msg, config);
   const condicao = anuncio.condicao === "novo" ? "Novo" : "Usado";
 
   return (

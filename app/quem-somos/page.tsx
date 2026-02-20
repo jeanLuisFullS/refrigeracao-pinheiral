@@ -1,10 +1,10 @@
 import { getConfig } from "@/lib/admin-data";
 import type { Config } from "@/lib/data";
 import { config as staticConfig } from "@/lib/data";
-import ServicosContent from "./ServicosContent";
+import QuemSomosContent from "./QuemSomosContent";
 
-export default async function ServicosPage() {
+export default async function QuemSomosPage() {
   const configRaw = await getConfig();
   const config = (configRaw?.nome ? configRaw : staticConfig) as Config;
-  return <ServicosContent config={config} />;
+  return <QuemSomosContent config={config} />;
 }
