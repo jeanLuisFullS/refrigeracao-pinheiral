@@ -55,6 +55,10 @@ export default function AdminDashboardPage() {
           <h2 className="font-semibold text-white">Visitantes</h2>
           <p className="text-slate-400 text-sm">Acessos por página e últimos visitantes</p>
         </Link>
+        <Link href="/admin/depoimentos" className="bg-slate-800 rounded-xl p-4 border border-slate-700 hover:border-teal-600 transition">
+          <h2 className="font-semibold text-white">Depoimentos</h2>
+          <p className="text-slate-400 text-sm">Gerenciar depoimentos de clientes</p>
+        </Link>
         <Link href="/admin/config" className="bg-slate-800 rounded-xl p-4 border border-slate-700 hover:border-teal-600 transition">
           <h2 className="font-semibold text-white">Configuração</h2>
           <p className="text-slate-400 text-sm">Nome, telefones, endereço, horário</p>

@@ -62,7 +62,23 @@ Em Storage crie um bucket público chamado `uploads`.
 
 Sem Supabase configurado, o site continua usando os JSON em `data/` e upload em disco ou link externo.
 
-## 5. Se edições não salvarem na Vercel
+## 5. Popular as tabelas com os dados iniciais (seed)
+
+Para preencher config, anúncios e depoimentos com o conteúdo de `data/config.json`, `data/anuncios.json` e `data/depoimentos.json` (incluindo as imagens já definidas nos anúncios), rode **uma vez** na pasta do projeto:
+
+```bash
+npm run seed:supabase
+```
+
+Ou, com Node direto:
+
+```bash
+node scripts/seed-supabase.js
+```
+
+O script usa as variáveis do arquivo `.env` (ou do ambiente). Garanta que `NEXT_PUBLIC_SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` estejam definidas no `.env` local. Depois do seed, o site (e o admin) passam a exibir esses dados quando usarem o Supabase.
+
+## 6. Se edições não salvarem na Vercel
 
 1. Confira os **nomes exatos** das variáveis: `NEXT_PUBLIC_SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY`.
 2. Use a chave **service_role** (secret), não a **anon** (pública). No Supabase: Settings > API > Project API keys > "service_role".
