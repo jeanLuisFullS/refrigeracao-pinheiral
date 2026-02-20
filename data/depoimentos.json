@@ -1,56 +1,74 @@
 [
     {
-        "id":  "1",
-        "nome":  "Maria S.",
-        "cidade":  "Volta Redonda",
-        "texto":  "Atendimento rápido e preço justo. Minha geladeira voltou a funcionar perfeitamente."
+        "id": "1",
+        "nome": "Maria S.",
+        "cidade": "Volta Redonda",
+        "texto": "Atendimento rápido e preço justo. Minha geladeira voltou a funcionar perfeitamente."
     },
     {
-        "id":  "2",
-        "nome":  "João P.",
-        "cidade":  "Pinheiral",
-        "texto":  "Recomendo! Consertaram meu ar condicionado no mesmo dia."
+        "id": "2",
+        "nome": "João P.",
+        "cidade": "Pinheiral",
+        "texto": "Recomendo! Consertaram meu ar condicionado no mesmo dia."
     },
     {
-        "id":  "3",
-        "nome":  "Ana L.",
-        "cidade":  "Barra Mansa",
-        "texto":  "Profissionais e honestos. Voltarei a contratar."
+        "id": "3",
+        "nome": "Ana L.",
+        "cidade": "Barra Mansa",
+        "texto": "Profissionais e honestos. Voltarei a contratar."
     },
     {
-        "nome":  "Roberto M.",
-        "id":  "4",
-        "cidade":  "Volta Redonda",
-        "texto":  "Comprei uma geladeira usada e saí satisfeito. Produto como descrito e entrega rápida."
+        "nome": "Roberto M.",
+        "id": "4",
+        "cidade": "Volta Redonda",
+        "texto": "Comprei uma geladeira usada e saí satisfeito. Produto como descrito e entrega rápida."
     },
     {
-        "nome":  "Carla F.",
-        "id":  "5",
-        "cidade":  "Pinheiral",
-        "texto":  "Melhor assistência técnica da região. Preço bom e serviço de qualidade."
+        "nome": "Carla F.",
+        "id": "5",
+        "cidade": "Pinheiral",
+        "texto": "Melhor assistência técnica da região. Preço bom e serviço de qualidade."
     },
     {
-        "nome":  "Paulo R.",
-        "id":  "6",
-        "cidade":  "Barra do Piraí",
-        "texto":  "Conserto de freezer feito com rapidez. Recomendo a todos."
+        "nome": "Paulo R.",
+        "id": "6",
+        "cidade": "Barra do Piraí",
+        "texto": "Conserto de freezer feito com rapidez. Recomendo a todos."
     },
     {
-        "nome":  "Fernanda L.",
-        "id":  "7",
-        "cidade":  "Volta Redonda",
-        "texto":  "Atendimento em domicílio sem complicação. Minha máquina de lavar está nova."
+        "nome": "Fernanda L.",
+        "id": "7",
+        "cidade": "Volta Redonda",
+        "texto": "Atendimento em domicílio sem complicação. Minha máquina de lavar está nova."
     },
     {
-        "nome":  "Marcos A.",
-        "id":  "8",
-        "cidade":  "Pinheiral",
-        "texto":  "Transparência no orçamento e trabalho bem feito. Já indiquei para a família."
+        "nome": "Marcos A.",
+        "id": "8",
+        "cidade": "Pinheiral",
+        "texto": "Transparência no orçamento e trabalho bem feito. Já indiquei para a família."
     },
     {
-        "nome":  "Luciana C.",
-        "id":  "9",
-        "cidade":  "Resende",
-        "texto":  "Comprei ar condicionado usado. Instalaram e está tudo certo. Obrigada!"
+        "nome": "Luciana C.",
+        "id": "9",
+        "cidade": "Resende",
+        "texto": "Comprei ar condicionado usado. Instalaram e está tudo certo. Obrigada!"
+    },
+    {
+        "nome": "Fernando T.",
+        "id": "10",
+        "cidade": "Piraí",
+        "texto": "Excelente trabalho no meu ar condicionado. Gelando demais!"
+    },
+    {
+        "nome": "Renata O.",
+        "id": "11",
+        "cidade": "Volta Redonda",
+        "texto": "Tive um problema final de semana com o freezer da lanchonete e salvaram minha vida!"
+    },
+    {
+        "nome": "Diego B.",
+        "id": "12",
+        "cidade": "Barra Mansa",
+        "texto": "Consertou a placa da minha máquina de lavar bem mais barato que a autorizada."
     }
 ]

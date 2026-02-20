@@ -44,7 +44,7 @@ export default function SecaoDepoimentos({ depoimentos: depoimentosProp }: { dep
           <div className="overflow-hidden -mx-4">
             <div
               className="flex gap-4 py-2"
-              style={{ animation: "depoimentosScrollHorizontal 35s linear infinite" }}
+              style={{ animation: "depoimentosScrollHorizontal 20s linear infinite" }}
             >
               {[...depoimentos, ...depoimentos].map((d, i) => (
                 <Card key={`${d.id}-${i}`} d={d} />
