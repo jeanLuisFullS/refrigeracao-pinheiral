@@ -3,6 +3,8 @@ import type { Config, Anuncio, Depoimento } from "@/lib/data";
 import { config as staticConfig } from "@/lib/data";
 import HomeContent from "./HomeContent";
 
+export const revalidate = 0;
+
 export default async function Page() {
   const [configRaw, anunciosRaw, depoimentosRaw] = await Promise.all([
     getConfig(),
