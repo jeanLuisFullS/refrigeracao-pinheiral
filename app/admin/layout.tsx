@@ -3,17 +3,30 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import {
+  LayoutDashboard,
+  Users,
+  FileText,
+  ShoppingBag,
+  Settings,
+  MessageSquare,
+  Wrench,
+  Bell,
+  KeyRound,
+  LogOut,
+  Menu,
+} from "lucide-react";
 
 const links = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/visitantes", label: "Visitantes" },
-  { href: "/admin/formularios", label: "Formulários" },
-  { href: "/admin/produtos", label: "Produtos" },
-  { href: "/admin/config", label: "Configuração" },
-  { href: "/admin/depoimentos", label: "Depoimentos" },
-  { href: "/admin/manutencao", label: "Manutenção" },
-  { href: "/admin/alertas", label: "Alertas" },
-  { href: "/admin/trocar-senha", label: "Trocar senha" },
+  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/visitantes", label: "Visitantes", icon: Users },
+  { href: "/admin/formularios", label: "Formulários", icon: FileText },
+  { href: "/admin/produtos", label: "Produtos", icon: ShoppingBag },
+  { href: "/admin/config", label: "Configuração", icon: Settings },
+  { href: "/admin/depoimentos", label: "Depoimentos", icon: MessageSquare },
+  { href: "/admin/manutencao", label: "Manutenção", icon: Wrench },
+  { href: "/admin/alertas", label: "Alertas", icon: Bell },
+  { href: "/admin/trocar-senha", label: "Trocar senha", icon: KeyRound },
 ];
 
 export default function AdminLayout(props: { children: React.ReactNode }) {
@@ -63,22 +76,27 @@ export default function AdminLayout(props: { children: React.ReactNode }) {
         <Link href="/admin" className="font-bold text-white text-lg">Admin</Link>
       </div>
       <nav className="p-2 flex-1 overflow-auto">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={"block px-3 py-3 rounded-lg text-sm min-h-[44px] flex items-center " + (pathname === link.href ? "bg-teal-600 text-white" : "text-slate-400 hover:bg-slate-700 hover:text-white")}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {links.map((link) => {
+          const Icon = link.icon;
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={"block px-3 py-3 rounded-lg text-sm min-h-[44px] flex items-center gap-2 " + (pathname === link.href ? "bg-teal-600 text-white" : "text-slate-400 hover:bg-slate-700 hover:text-white")}
+            >
+              <Icon className="w-5 h-5" />
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
       <div className="p-2 border-t border-slate-700">
         <button
           type="button"
           onClick={handleLogout}
-          className="w-full px-3 py-3 rounded-lg text-sm text-slate-400 hover:bg-slate-700 hover:text-white text-left min-h-[44px]"
+          className="w-full px-3 py-3 rounded-lg text-sm text-slate-400 hover:bg-slate-700 hover:text-white text-left min-h-[44px] flex items-center gap-2"
         >
+          <LogOut className="w-5 h-5" />
           Sair
         </button>
       </div>
@@ -100,9 +118,7 @@ export default function AdminLayout(props: { children: React.ReactNode }) {
           className="p-2 -ml-2 text-white rounded-lg hover:bg-slate-700"
           aria-label="Abrir menu"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          <Menu className="w-6 h-6" />
         </button>
         <Link href="/admin" className="font-bold text-white ml-2">Admin</Link>
       </div>
